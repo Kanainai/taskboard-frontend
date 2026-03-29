@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { format, isPast, isToday } from 'date-fns';
 import { Clock, Trash2, AlertTriangle, User, Play, CheckCircle, CalendarPlus, RefreshCw } from 'lucide-react';
 import theme from '../theme';
 
 export default function TaskCard({ task, onAdvance, onDelete }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const priorityColors = {
     high: theme.colors.priorityHigh,
     medium: theme.colors.priorityMedium,
@@ -70,15 +77,27 @@ export default function TaskCard({ task, onAdvance, onDelete }) {
       cursor: 'pointer',
       marginBottom: '8px',
     }}
+    onClick={(e) => {
+      // On mobile, toggle the hover state on click (unless clicking action buttons)
+      if (isMobile && !e.target.closest('button')) {
+        setIsHovered(!isHovered);
+      }
+    }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.boxShadow = theme.shadows.cardHover;
-      e.currentTarget.style.transform = 'translateY(-1px)';
-      setIsHovered(true);
+      // On desktop, use hover
+      if (!isMobile) {
+        e.currentTarget.style.boxShadow = theme.shadows.cardHover;
+        e.currentTarget.style.transform = 'translateY(-1px)';
+        setIsHovered(true);
+      }
     }}
     onMouseLeave={(e) => {
-      e.currentTarget.style.boxShadow = theme.shadows.card;
-      e.currentTarget.style.transform = 'translateY(0)';
-      setIsHovered(false);
+      // On desktop, remove hover
+      if (!isMobile) {
+        e.currentTarget.style.boxShadow = theme.shadows.card;
+        e.currentTarget.style.transform = 'translateY(0)';
+        setIsHovered(false);
+      }
     }}
     >
       {/* Title Row */}
