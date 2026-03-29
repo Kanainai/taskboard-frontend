@@ -23,7 +23,7 @@ function App() {
   const fetchOverdueCount = async () => {
     try {
       const response = await getOverdueTasks();
-      const count = Array.isArray(response.data) ? response.data.length : (response.data.tasks ? response.data.tasks.length : 0);
+      const count = Array.isArray(response.data) ? response.data.length : 0;
       setOverdueCount(count);
     } catch (error) {
       console.error('Error fetching overdue tasks:', error);
