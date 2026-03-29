@@ -282,3 +282,18 @@ body {
 .overdue-list::-webkit-scrollbar {
   display: none;
 }
+
+/* Mobile DatePicker Portal */
+@media (max-width: 768px) {
+  .react-datepicker__portal {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .react-datepicker__portal .react-datepicker {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+  }
+}

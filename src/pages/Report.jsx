@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { getDailyReport, getOverdueTasks } from '../api/tasks';
 import { Calendar, TrendingUp, CheckCircle, AlertCircle, Clock, LayoutDashboard, AlertTriangle } from 'lucide-react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import theme from '../theme';
 
 export default function Report() {
-  const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd'));
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [report, setReport] = useState(null);
   const [overdueTasks, setOverdueTasks] = useState([]);
 
@@ -15,13 +17,13 @@ export default function Report() {
   }, [selectedDate]);
 
   const formatDate = (date) => {
-    const d = new Date(date);
-    return d.toISOString().split('T')[0];
+    if (!date) return '';
+    return date.toISOString().split('T')[0];
   };
 
-  const fetchReport = async () => {
+  const fetchReport = async (dateString) => {
     try {
-      const formattedDate = formatDate(selectedDate);
+      const formattedDate = dateString || formatDate(selectedDate);
       console.log('Fetching report for date:', formattedDate);
       const response = await getDailyReport(formattedDate);
       console.log('Report response:', response.data);
@@ -127,32 +129,45 @@ export default function Report() {
           <Calendar size={14} />
           Select Date
         </label>
-        <div style={{ position: 'relative', width: 'fit-content' }}>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            style={{
-              padding: '10px 14px 10px 38px',
-              border: '1px solid #E8E0D0',
-              borderRadius: '8px',
-              backgroundColor: 'white',
-              color: theme.colors.textPrimary,
-              outline: 'none',
-              fontFamily: theme.fonts.family,
-              fontSize: '14px',
-            }}
-            onFocus={(e) => e.target.style.borderColor = '#F59E0B'}
-            onBlur={(e) => e.target.style.borderColor = '#E8E0D0'}
-          />
-          <Calendar size={16} color="#9CA3AF" style={{
-            position: 'absolute',
-            left: '12px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            pointerEvents: 'none',
-          }} />
-        </div>
+        <DatePicker
+          selected={selectedDate}
+          onChange={(date) => {
+            setSelectedDate(date);
+            fetchReport(formatDate(date));
+          }}
+          dateFormat="MMM dd, yyyy"
+          maxDate={new Date()}
+          customInput={
+            <button
+              type="button"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 14px',
+                background: '#FFFFFF',
+                border: '1px solid #E8E0D0',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                color: '#1A1A1A',
+                fontWeight: 400,
+                textAlign: 'left',
+                minWidth: '180px',
+                fontFamily: theme.fonts.family,
+              }}
+            >
+              <Calendar size={15} color="#9CA3AF" />
+              {selectedDate
+                ? selectedDate.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: '2-digit',
+                    year: 'numeric',
+                  })
+                : 'Select date'}
+            </button>
+          }
+        />
       </div>
 
       {/* Summary Cards */}

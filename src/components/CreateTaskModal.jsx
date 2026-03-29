@@ -181,6 +181,24 @@ export default function CreateTaskModal({ isOpen, onClose, onSubmit }) {
               minDate={new Date()}
               dateFormat="MMM dd, yyyy"
               placeholderText="Select due date"
+              withPortal={window.innerWidth <= 768}
+              popperPlacement="bottom-start"
+              popperModifiers={[
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 8],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    rootBoundary: 'viewport',
+                    tether: false,
+                    altAxis: true,
+                  },
+                },
+              ]}
               customInput={
                 <button
                   type="button"
