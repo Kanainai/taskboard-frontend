@@ -456,7 +456,7 @@ export default function Board() {
           gridTemplateColumns: '1fr 1fr 1fr',
           gap: '20px',
           padding: '0 2rem 2rem 2rem',
-          height: 'calc(100dvh - 180px)',
+          height: 'calc(100dvh - 140px)',
           alignItems: 'start',
         }}>
           <Column
