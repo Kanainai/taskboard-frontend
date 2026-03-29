@@ -165,29 +165,35 @@ export default function Report() {
         }}>
           {/* Total Tasks Card */}
           <div style={{
-            backgroundColor: 'white',
+            background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: '20px',
-            position: 'relative',
+            padding: '24px',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            minWidth: '160px',
           }}>
-            <LayoutDashboard size={28} color="#F59E0B" style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              opacity: 1,
-            }} />
             <div style={{
-              fontSize: '32px',
-              fontWeight: 700,
-              color: '#F59E0B',
-              marginBottom: '0.5rem',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
             }}>
-              {getTotalTasks()}
+              <div style={{
+                fontSize: '40px',
+                fontWeight: '700',
+                color: '#F59E0B',
+                lineHeight: 1,
+              }}>
+                {getTotalTasks()}
+              </div>
+              <LayoutDashboard size={32} color="#F59E0B" />
             </div>
             <div style={{
-              fontSize: '13px',
+              fontSize: '14px',
               color: '#6B7280',
+              fontWeight: '500',
             }}>
               Total Tasks
             </div>
@@ -195,29 +201,35 @@ export default function Report() {
 
           {/* Completed Card */}
           <div style={{
-            backgroundColor: 'white',
+            background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: '20px',
-            position: 'relative',
+            padding: '24px',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            minWidth: '160px',
           }}>
-            <CheckCircle size={28} color="#22C55E" style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              opacity: 1,
-            }} />
             <div style={{
-              fontSize: '32px',
-              fontWeight: 700,
-              color: '#F59E0B',
-              marginBottom: '0.5rem',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
             }}>
-              {getCompletedTasks()}
+              <div style={{
+                fontSize: '40px',
+                fontWeight: '700',
+                color: '#F59E0B',
+                lineHeight: 1,
+              }}>
+                {getCompletedTasks()}
+              </div>
+              <CheckCircle size={32} color="#22C55E" />
             </div>
             <div style={{
-              fontSize: '13px',
+              fontSize: '14px',
               color: '#6B7280',
+              fontWeight: '500',
             }}>
               Completed
             </div>
@@ -225,29 +237,35 @@ export default function Report() {
 
           {/* Overdue Card */}
           <div style={{
-            backgroundColor: 'white',
+            background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: '20px',
-            position: 'relative',
+            padding: '24px',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            minWidth: '160px',
           }}>
-            <AlertCircle size={28} color="#EF4444" style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              opacity: 1,
-            }} />
             <div style={{
-              fontSize: '32px',
-              fontWeight: 700,
-              color: '#F59E0B',
-              marginBottom: '0.5rem',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
             }}>
-              {overdueTasks.length}
+              <div style={{
+                fontSize: '40px',
+                fontWeight: '700',
+                color: '#F59E0B',
+                lineHeight: 1,
+              }}>
+                {overdueTasks.length}
+              </div>
+              <AlertCircle size={32} color="#EF4444" />
             </div>
             <div style={{
-              fontSize: '13px',
+              fontSize: '14px',
               color: '#6B7280',
+              fontWeight: '500',
             }}>
               Overdue
             </div>
@@ -391,69 +409,87 @@ export default function Report() {
         </h2>
 
         {overdueTasks.length > 0 ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="overdue-list" style={{
+            maxHeight: '300px',
+            overflowY: 'auto',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}>
             {overdueTasks.map((task) => (
               <div
                 key={task.id}
                 style={{
-                  backgroundColor: '#FEF2F2',
+                  background: '#FEF2F2',
                   border: '1px solid #FECACA',
                   borderRadius: '8px',
                   padding: '12px 16px',
+                  marginBottom: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
                 }}
               >
+                <AlertTriangle size={14} color="#EF4444" />
+                <span style={{
+                  fontWeight: 600,
+                  color: '#1A1A1A',
+                  fontSize: '14px',
+                }}>
+                  {task.title}
+                </span>
+                <div style={{ flex: 1 }} />
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  marginBottom: '4px',
+                  gap: '6px',
                 }}>
-                  <AlertTriangle size={14} color="#EF4444" />
                   <span style={{
                     width: '6px',
                     height: '6px',
                     borderRadius: '50%',
                     backgroundColor: priorityColors[task.priority],
                   }} />
-                  <h3 style={{
-                    fontWeight: 600,
-                    color: '#1A1A1A',
-                    fontSize: '14px',
+                  <span style={{
+                    fontSize: '13px',
+                    color: '#6B7280',
+                    textTransform: 'capitalize',
                   }}>
-                    {task.title}
-                  </h3>
+                    {task.priority}
+                  </span>
                 </div>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  marginLeft: '30px',
+                  gap: '4px',
                 }}>
                   <Clock size={12} color="#EF4444" />
-                  <p style={{
+                  <span style={{
                     fontSize: '13px',
                     color: '#EF4444',
-                    margin: 0,
                   }}>
-                    Due: {format(new Date(task.due_date), 'MMM dd, yyyy')}
-                  </p>
+                    {format(new Date(task.due_date), 'MMM dd, yyyy')}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div style={{
-            backgroundColor: 'white',
-            border: '1px solid #E8E0D0',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '32px',
+            background: '#F0FDF4',
             borderRadius: '12px',
-            padding: '3rem',
-            textAlign: 'center',
+            border: '1px solid #BBF7D0',
           }}>
-            <CheckCircle size={48} color="#22C55E" style={{ margin: '0 auto 1rem' }} />
+            <CheckCircle size={36} color="#22C55E" style={{ marginBottom: '12px' }} />
             <p style={{
               fontSize: '16px',
               color: '#22C55E',
               fontWeight: 500,
+              margin: 0,
             }}>
               All caught up! No overdue tasks.
             </p>

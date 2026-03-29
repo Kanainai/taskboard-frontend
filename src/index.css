@@ -277,3 +277,8 @@ body {
 .react-datepicker-popper {
   z-index: 9999 !important;
 }
+
+/* Hide scrollbar on overdue tasks list */
+.overdue-list::-webkit-scrollbar {
+  display: none;
+}
