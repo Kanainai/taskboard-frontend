@@ -68,9 +68,9 @@ export default function Sidebar({ onClose }) {
       display: 'flex',
       flexDirection: 'column',
       fontFamily: theme.fonts.family,
-      overflowY: 'auto',
       position: 'relative',
       zIndex: 99999,
+      overflow: 'hidden',
     }}>
       {/* Mobile Close Button */}
       <button
@@ -98,16 +98,16 @@ export default function Sidebar({ onClose }) {
       </button>
 
       {/* Logo Area */}
-      <div style={{ padding: '1.5rem', paddingBottom: '1rem', flexShrink: 0 }}>
+      <div style={{ padding: '1rem', paddingBottom: '0.75rem', flexShrink: 0 }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
-          marginBottom: '1rem',
+          gap: '8px',
+          marginBottom: '0.75rem',
         }}>
-          <CheckSquare size={24} color="#F59E0B" />
+          <CheckSquare size={20} color="#F59E0B" />
           <h1 style={{
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: 700,
             color: '#1A1A1A',
             margin: 0,
@@ -120,40 +120,27 @@ export default function Sidebar({ onClose }) {
         {userName && (
           <div style={{
             backgroundColor: '#FEF3C7',
-            borderRadius: '10px',
-            padding: '12px',
+            borderRadius: '8px',
+            padding: '10px',
             border: '1px solid #FDE68A',
-            position: 'relative',
-            overflow: 'hidden',
           }}>
-            {/* Decorative gradient overlay */}
             <div style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              width: '60px',
-              height: '60px',
-              background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }} />
-            
-            <div style={{
-              marginBottom: '8px',
+              marginBottom: '6px',
             }}>
               <div style={{
-                fontSize: '12px',
+                fontSize: '11px',
                 color: '#92400E',
                 fontWeight: 600,
-                marginBottom: '3px',
+                marginBottom: '2px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '4px',
               }}>
                 <span>{getGreetingEmoji()}</span>
                 <span>{getGreeting()}</span>
               </div>
               <div style={{
-                fontSize: '14px',
+                fontSize: '13px',
                 color: '#1A1A1A',
                 fontWeight: 700,
                 wordBreak: 'break-word',
@@ -166,12 +153,12 @@ export default function Sidebar({ onClose }) {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '5px',
-              fontSize: '10px',
+              gap: '4px',
+              fontSize: '9px',
               color: '#78350F',
               fontWeight: 500,
             }}>
-              <Calendar size={10} />
+              <Calendar size={9} />
               <span style={{ wordBreak: 'break-word' }}>{getCurrentDate()}</span>
             </div>
           </div>
@@ -187,7 +174,7 @@ export default function Sidebar({ onClose }) {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            padding: '10px 16px',
+            padding: '8px 12px',
             marginBottom: '0.25rem',
             borderRadius: isActive('/board') ? '0 8px 8px 0' : '8px',
             textDecoration: 'none',
@@ -196,6 +183,7 @@ export default function Sidebar({ onClose }) {
             color: isActive('/board') ? '#D97706' : '#6B7280',
             fontWeight: isActive('/board') ? 600 : 400,
             borderLeft: isActive('/board') ? '3px solid #F59E0B' : '3px solid transparent',
+            fontSize: '14px',
           }}
           onMouseEnter={(e) => {
             if (!isActive('/board')) {
@@ -210,7 +198,7 @@ export default function Sidebar({ onClose }) {
             }
           }}
         >
-          <LayoutDashboard size={16} />
+          <LayoutDashboard size={15} />
           <span>Board</span>
         </Link>
         
@@ -221,7 +209,7 @@ export default function Sidebar({ onClose }) {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            padding: '10px 16px',
+            padding: '8px 12px',
             marginBottom: '0.25rem',
             borderRadius: isActive('/report') ? '0 8px 8px 0' : '8px',
             textDecoration: 'none',
@@ -230,6 +218,7 @@ export default function Sidebar({ onClose }) {
             color: isActive('/report') ? '#D97706' : '#6B7280',
             fontWeight: isActive('/report') ? 600 : 400,
             borderLeft: isActive('/report') ? '3px solid #F59E0B' : '3px solid transparent',
+            fontSize: '14px',
           }}
           onMouseEnter={(e) => {
             if (!isActive('/report')) {
@@ -244,7 +233,7 @@ export default function Sidebar({ onClose }) {
             }
           }}
         >
-          <BarChart2 size={16} />
+          <BarChart2 size={15} />
           <span>Report</span>
         </Link>
 
@@ -255,7 +244,7 @@ export default function Sidebar({ onClose }) {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            padding: '10px 16px',
+            padding: '8px 12px',
             marginBottom: '0.25rem',
             borderRadius: '8px',
             textDecoration: 'none',
@@ -279,53 +268,50 @@ export default function Sidebar({ onClose }) {
             e.currentTarget.style.color = '#6B7280';
           }}
         >
-          <LogOut size={16} />
+          <LogOut size={15} />
           <span>Logout</span>
         </button>
       </nav>
 
       {/* Overdue Badge */}
-      <div style={{ padding: '0 1rem 1.5rem', marginTop: 'auto', flexShrink: 0 }}>
+      <div style={{ padding: '0 1rem 1rem', marginTop: 'auto', flexShrink: 0 }}>
         <div style={{
           height: '1px',
           backgroundColor: '#E8E0D0',
-          marginBottom: '0.75rem',
+          marginBottom: '0.5rem',
         }} />
         
         <div style={{
-          padding: '8px 12px',
+          padding: '8px 10px',
           backgroundColor: overdueCount > 0 ? '#FEF2F2' : '#F9FAFB',
           border: `1px solid ${overdueCount > 0 ? '#FECACA' : '#E5E7EB'}`,
-          borderRadius: '8px',
+          borderRadius: '6px',
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            whiteSpace: 'nowrap',
+            gap: '6px',
           }}>
-            <AlertCircle size={14} color={overdueCount > 0 ? '#EF4444' : '#9CA3AF'} style={{ flexShrink: 0 }} />
+            <AlertCircle size={13} color={overdueCount > 0 ? '#EF4444' : '#9CA3AF'} style={{ flexShrink: 0 }} />
             <span style={{
-              fontSize: '12px',
+              fontSize: '11px',
               color: overdueCount > 0 ? '#EF4444' : '#6B7280',
               flex: 1,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
             }}>
-              Overdue Tasks
+              Overdue
             </span>
             <span style={{
-              minWidth: '22px',
-              height: '22px',
+              minWidth: '20px',
+              height: '20px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '11px',
+              fontSize: '10px',
               fontWeight: 700,
               color: '#FFFFFF',
               backgroundColor: overdueCount > 0 ? '#EF4444' : '#9CA3AF',
               borderRadius: '9999px',
-              padding: '0 6px',
+              padding: '0 5px',
               flexShrink: 0,
             }}>
               {overdueCount}
