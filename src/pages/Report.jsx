@@ -168,7 +168,7 @@ export default function Report() {
             background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: '24px',
+            padding: isMobile ? '16px' : '24px',
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
@@ -181,14 +181,14 @@ export default function Report() {
               alignItems: 'flex-start',
             }}>
               <div style={{
-                fontSize: '40px',
+                fontSize: isMobile ? '32px' : '40px',
                 fontWeight: '700',
                 color: '#F59E0B',
                 lineHeight: 1,
               }}>
                 {getTotalTasks()}
               </div>
-              <LayoutDashboard size={32} color="#F59E0B" />
+              <LayoutDashboard size={isMobile ? 24 : 32} color="#F59E0B" />
             </div>
             <div style={{
               fontSize: '14px',
@@ -204,7 +204,7 @@ export default function Report() {
             background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: '24px',
+            padding: isMobile ? '16px' : '24px',
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
@@ -217,14 +217,14 @@ export default function Report() {
               alignItems: 'flex-start',
             }}>
               <div style={{
-                fontSize: '40px',
+                fontSize: isMobile ? '32px' : '40px',
                 fontWeight: '700',
                 color: '#F59E0B',
                 lineHeight: 1,
               }}>
                 {getCompletedTasks()}
               </div>
-              <CheckCircle size={32} color="#22C55E" />
+              <CheckCircle size={isMobile ? 24 : 32} color="#22C55E" />
             </div>
             <div style={{
               fontSize: '14px',
@@ -240,7 +240,7 @@ export default function Report() {
             background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: '24px',
+            padding: isMobile ? '16px' : '24px',
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
@@ -253,14 +253,14 @@ export default function Report() {
               alignItems: 'flex-start',
             }}>
               <div style={{
-                fontSize: '40px',
+                fontSize: isMobile ? '32px' : '40px',
                 fontWeight: '700',
                 color: '#F59E0B',
                 lineHeight: 1,
               }}>
                 {overdueTasks.length}
               </div>
-              <AlertCircle size={32} color="#EF4444" />
+              <AlertCircle size={isMobile ? 24 : 32} color="#EF4444" />
             </div>
             <div style={{
               fontSize: '14px',
@@ -275,15 +275,19 @@ export default function Report() {
 
       {/* Report Table */}
       {report && (
-        <div className="report-table" style={{
-          backgroundColor: 'white',
+        <div style={{
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
           borderRadius: '12px',
           border: '1px solid #E8E0D0',
-          overflow: 'hidden',
           marginBottom: '2rem',
-          overflowX: isMobile ? 'auto' : 'visible',
         }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table style={{
+            width: '100%',
+            minWidth: '500px',
+            borderCollapse: 'collapse',
+            background: 'white',
+          }}>
             <thead>
               <tr style={{ backgroundColor: '#FAF7F2' }}>
                 <th style={{
