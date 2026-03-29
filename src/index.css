@@ -283,6 +283,15 @@ body {
   display: none;
 }
 
+/* DatePicker z-index fix */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+.react-datepicker {
+  z-index: 9999 !important;
+}
+
 /* Mobile DatePicker Portal */
 @media (max-width: 768px) {
   .react-datepicker__portal {
@@ -297,13 +306,4 @@ body {
     border-radius: 16px !important;
     overflow: hidden !important;
   }
-}
-
-/* DatePicker z-index fix */
-.react-datepicker-popper {
-  z-index: 9999 !important;
-}
-
-.react-datepicker {
-  z-index: 9999 !important;
 }

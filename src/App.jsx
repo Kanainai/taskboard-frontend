@@ -61,7 +61,7 @@ function App() {
           left: isMobileMenuOpen ? 0 : '-100%',
           top: 0,
           height: '100vh',
-          zIndex: 999,
+          zIndex: 99999,
           transition: 'left 0.3s ease',
         }}
         className="sidebar-container"
@@ -76,8 +76,8 @@ function App() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            zIndex: 998,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            zIndex: 99998,
           }}
           className="mobile-overlay"
         />

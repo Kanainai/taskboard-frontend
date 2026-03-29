@@ -70,6 +70,7 @@ export default function Sidebar({ onClose }) {
       fontFamily: theme.fonts.family,
       overflowY: 'auto',
       position: 'relative',
+      zIndex: 99999,
     }}>
       {/* Mobile Close Button */}
       <button
