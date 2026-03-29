@@ -62,7 +62,7 @@ export default function Sidebar({ onClose }) {
     <div style={{
       width: '280px',
       minWidth: '280px',
-      height: '100vh',
+      height: '100dvh',
       backgroundColor: theme.colors.sidebarBg,
       borderRight: `1px solid ${theme.colors.border}`,
       display: 'flex',

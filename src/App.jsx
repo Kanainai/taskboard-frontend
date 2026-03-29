@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   const AppLayout = ({ children }) => (
-    <div style={{ display: 'flex', height: '100vh', position: 'relative' }}>
+    <div style={{ display: 'flex', height: '100dvh', position: 'relative' }}>
       {/* Mobile Menu Button - Hide when sidebar is open */}
       {!isMobileMenuOpen && (
         <button
@@ -60,7 +60,7 @@ function App() {
           position: 'fixed',
           left: isMobileMenuOpen ? 0 : '-100%',
           top: 0,
-          height: '100vh',
+          height: '100dvh',
           zIndex: 99999,
           transition: 'left 0.3s ease',
         }}
@@ -84,7 +84,7 @@ function App() {
       )}
 
       {/* Main Content */}
-      <div style={{ flex: 1, marginLeft: 0, overflowY: 'auto', height: '100vh' }} className="main-content">
+      <div style={{ flex: 1, marginLeft: 0, overflowY: 'auto', height: '100dvh' }} className="main-content">
         {children}
       </div>
 
