@@ -24,9 +24,7 @@ export default function Report({ onTaskChange }) {
   const fetchReport = async (dateString) => {
     try {
       const formattedDate = dateString || formatDate(selectedDate);
-      console.log('Fetching report for date:', formattedDate);
       const response = await getDailyReport(formattedDate);
-      console.log('Report response:', response.data);
       setReport(response.data);
     } catch (error) {
       console.error('Error fetching report:', error);
@@ -36,8 +34,6 @@ export default function Report({ onTaskChange }) {
   const fetchOverdueTasks = async () => {
     try {
       const response = await getOverdueTasks();
-      console.log('Overdue tasks response:', response.data);
-      console.log('Overdue tasks count:', Array.isArray(response.data) ? response.data.length : 0);
       setOverdueTasks(response.data);
     } catch (error) {
       console.error('Error fetching overdue tasks:', error);
@@ -72,7 +68,6 @@ export default function Report({ onTaskChange }) {
     Object.values(report.summary).forEach(counts => {
       completed += counts.done;
     });
-    console.log('Completed tasks for selected date:', completed);
     return completed;
   };
 
