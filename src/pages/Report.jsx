@@ -129,45 +129,53 @@ export default function Report() {
           <Calendar size={14} />
           Select Date
         </label>
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date) => {
-            setSelectedDate(date);
-            fetchReport(formatDate(date));
-          }}
-          dateFormat="MMM dd, yyyy"
-          maxDate={new Date()}
-          customInput={
-            <button
-              type="button"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '10px 14px',
-                background: '#FFFFFF',
-                border: '1px solid #E8E0D0',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                color: '#1A1A1A',
-                fontWeight: 400,
-                textAlign: 'left',
-                minWidth: '180px',
-                fontFamily: theme.fonts.family,
-              }}
-            >
-              <Calendar size={15} color="#9CA3AF" />
-              {selectedDate
-                ? selectedDate.toLocaleDateString('en-US', {
-                    month: 'short',
-                    day: '2-digit',
-                    year: 'numeric',
-                  })
-                : 'Select date'}
-            </button>
-          }
-        />
+        <div style={{ position: 'relative', zIndex: 9999, marginBottom: '24px' }}>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => {
+              setSelectedDate(date);
+              fetchReport(formatDate(date));
+            }}
+            dateFormat="MMM dd, yyyy"
+            maxDate={new Date()}
+            withPortal={window.innerWidth <= 768}
+            popperPlacement="bottom-start"
+            popperProps={{
+              strategy: 'fixed'
+            }}
+            portalId="root"
+            customInput={
+              <button
+                type="button"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  background: '#FFFFFF',
+                  border: '1px solid #E8E0D0',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  color: '#1A1A1A',
+                  fontWeight: 400,
+                  textAlign: 'left',
+                  minWidth: '180px',
+                  fontFamily: theme.fonts.family,
+                }}
+              >
+                <Calendar size={15} color="#9CA3AF" />
+                {selectedDate
+                  ? selectedDate.toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: '2-digit',
+                      year: 'numeric',
+                    })
+                  : 'Select date'}
+              </button>
+            }
+          />
+        </div>
       </div>
 
       {/* Summary Cards */}
