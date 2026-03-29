@@ -32,7 +32,7 @@ const SkeletonCard = () => (
   </div>
 );
 
-export default function Board() {
+export default function Board({ onTaskChange }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,6 +81,7 @@ export default function Board() {
   const handleCreateTask = async (taskData) => {
     await createTask(taskData);
     fetchTasks();
+    if (onTaskChange) onTaskChange();
   };
 
   const handleAdvanceStatus = async (task) => {
@@ -95,6 +96,7 @@ export default function Board() {
       await updateTaskStatus(confirmAdvance.task.id);
       setConfirmAdvance({ isOpen: false, task: null });
       fetchTasks();
+      if (onTaskChange) onTaskChange();
     } catch (error) {
       console.error('Error updating task:', error);
       alert(error.response?.data?.error || 'Failed to update task');
@@ -119,6 +121,7 @@ export default function Board() {
       await deleteTask(confirmDelete.taskId);
       setConfirmDelete({ isOpen: false, taskId: null, taskTitle: '' });
       fetchTasks();
+      if (onTaskChange) onTaskChange();
     } catch (error) {
       console.error('Error deleting task:', error);
       alert(error.response?.data?.error || 'Failed to delete task');

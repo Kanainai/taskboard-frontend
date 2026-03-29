@@ -1,18 +1,15 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-import { getOverdueTasks } from '../api/tasks';
 import { CheckSquare, LayoutDashboard, BarChart2, AlertCircle, LogOut, Calendar, X } from 'lucide-react';
 import theme from '../theme';
 
-export default function Sidebar({ onClose }) {
+export default function Sidebar({ onClose, overdueCount = 0 }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [overdueCount, setOverdueCount] = useState(0);
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    fetchOverdueCount();
     const savedName = localStorage.getItem('taskboard_user_name');
     if (savedName) {
       setUserName(savedName);
@@ -20,18 +17,6 @@ export default function Sidebar({ onClose }) {
   }, []);
 
   const displayName = userName ? userName.toUpperCase() : '';
-
-  const fetchOverdueCount = async () => {
-    try {
-      const response = await getOverdueTasks();
-      console.log('Overdue tasks response:', response.data);
-      const count = Array.isArray(response.data) ? response.data.length : (response.data.tasks ? response.data.tasks.length : 0);
-      console.log('Overdue count:', count);
-      setOverdueCount(count);
-    } catch (error) {
-      console.error('Error fetching overdue tasks:', error);
-    }
-  };
 
   const handleLogout = () => {
     localStorage.removeItem('taskboard_user_name');

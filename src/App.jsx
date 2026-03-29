@@ -5,17 +5,30 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Board from './pages/Board';
 import Report from './pages/Report';
 import Landing from './pages/Landing';
-import { pingApi } from './api/tasks';
+import { pingApi, getOverdueTasks } from './api/tasks';
 import { Menu, X } from 'lucide-react';
 import './index.css';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [overdueCount, setOverdueCount] = useState(0);
 
   useEffect(() => {
     // Warm up Laravel API on app load
     pingApi();
+    // Fetch initial overdue count
+    fetchOverdueCount();
   }, []);
+
+  const fetchOverdueCount = async () => {
+    try {
+      const response = await getOverdueTasks();
+      const count = Array.isArray(response.data) ? response.data.length : (response.data.tasks ? response.data.tasks.length : 0);
+      setOverdueCount(count);
+    } catch (error) {
+      console.error('Error fetching overdue tasks:', error);
+    }
+  };
 
   const AppLayout = ({ children }) => (
     <div style={{ display: 'flex', height: '100dvh', position: 'relative' }}>
@@ -66,7 +79,7 @@ function App() {
         }}
         className="sidebar-container"
       >
-        <Sidebar onClose={() => setIsMobileMenuOpen(false)} />
+        <Sidebar onClose={() => setIsMobileMenuOpen(false)} overdueCount={overdueCount} />
       </div>
 
       {/* Overlay for mobile */}
@@ -127,7 +140,7 @@ function App() {
         <Route path="/board" element={
           <ProtectedRoute>
             <AppLayout>
-              <Board />
+              <Board onTaskChange={fetchOverdueCount} />
             </AppLayout>
           </ProtectedRoute>
         } />
@@ -135,7 +148,7 @@ function App() {
         <Route path="/report" element={
           <ProtectedRoute>
             <AppLayout>
-              <Report />
+              <Report onTaskChange={fetchOverdueCount} />
             </AppLayout>
           </ProtectedRoute>
         } />

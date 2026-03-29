@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import theme from '../theme';
 
-export default function Report() {
+export default function Report({ onTaskChange }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [report, setReport] = useState(null);
   const [overdueTasks, setOverdueTasks] = useState([]);
