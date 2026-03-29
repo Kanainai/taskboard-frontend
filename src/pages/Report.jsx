@@ -87,7 +87,7 @@ export default function Report() {
   return (
     <div style={{
       flex: 1,
-      padding: '2rem',
+      padding: isMobile ? '16px' : '32px',
       backgroundColor: theme.colors.pageBg,
       overflowY: 'auto',
       fontFamily: theme.fonts.family,
@@ -99,7 +99,7 @@ export default function Report() {
         <TrendingUp size={28} color="#F59E0B" />
         <div>
           <h1 style={{
-            fontSize: '28px',
+            fontSize: isMobile ? '22px' : '28px',
             fontWeight: 700,
             color: theme.colors.textPrimary,
             marginBottom: '0.25rem',
@@ -180,23 +180,23 @@ export default function Report() {
 
       {/* Summary Cards */}
       {report && (
-        <div className="stat-cards-row" style={{
+        <div style={{
           display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          gap: '1.5rem',
-          marginBottom: '2rem',
+          flexDirection: 'row',
+          gap: isMobile ? '8px' : '1.5rem',
+          marginBottom: isMobile ? '24px' : '2rem',
         }}>
           {/* Total Tasks Card */}
           <div style={{
             background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: isMobile ? '16px' : '24px',
+            padding: isMobile ? '12px' : '24px',
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            minWidth: '160px',
+            minWidth: 0,
           }}>
             <div style={{
               display: 'flex',
@@ -204,17 +204,17 @@ export default function Report() {
               alignItems: 'flex-start',
             }}>
               <div style={{
-                fontSize: isMobile ? '32px' : '40px',
+                fontSize: isMobile ? '24px' : '40px',
                 fontWeight: '700',
                 color: '#F59E0B',
                 lineHeight: 1,
               }}>
                 {getTotalTasks()}
               </div>
-              <LayoutDashboard size={isMobile ? 24 : 32} color="#F59E0B" />
+              <LayoutDashboard size={isMobile ? 20 : 32} color="#F59E0B" />
             </div>
             <div style={{
-              fontSize: '14px',
+              fontSize: isMobile ? '11px' : '14px',
               color: '#6B7280',
               fontWeight: '500',
             }}>
@@ -227,12 +227,12 @@ export default function Report() {
             background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: isMobile ? '16px' : '24px',
+            padding: isMobile ? '12px' : '24px',
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            minWidth: '160px',
+            minWidth: 0,
           }}>
             <div style={{
               display: 'flex',
@@ -240,17 +240,17 @@ export default function Report() {
               alignItems: 'flex-start',
             }}>
               <div style={{
-                fontSize: isMobile ? '32px' : '40px',
+                fontSize: isMobile ? '24px' : '40px',
                 fontWeight: '700',
                 color: '#F59E0B',
                 lineHeight: 1,
               }}>
                 {getCompletedTasks()}
               </div>
-              <CheckCircle size={isMobile ? 24 : 32} color="#22C55E" />
+              <CheckCircle size={isMobile ? 20 : 32} color="#22C55E" />
             </div>
             <div style={{
-              fontSize: '14px',
+              fontSize: isMobile ? '11px' : '14px',
               color: '#6B7280',
               fontWeight: '500',
             }}>
@@ -263,12 +263,12 @@ export default function Report() {
             background: '#FFFFFF',
             border: '1px solid #E8E0D0',
             borderRadius: '12px',
-            padding: isMobile ? '16px' : '24px',
+            padding: isMobile ? '12px' : '24px',
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            minWidth: '160px',
+            minWidth: 0,
           }}>
             <div style={{
               display: 'flex',
@@ -276,17 +276,17 @@ export default function Report() {
               alignItems: 'flex-start',
             }}>
               <div style={{
-                fontSize: isMobile ? '32px' : '40px',
+                fontSize: isMobile ? '24px' : '40px',
                 fontWeight: '700',
                 color: '#F59E0B',
                 lineHeight: 1,
               }}>
                 {overdueTasks.length}
               </div>
-              <AlertCircle size={isMobile ? 24 : 32} color="#EF4444" />
+              <AlertCircle size={isMobile ? 20 : 32} color="#EF4444" />
             </div>
             <div style={{
-              fontSize: '14px',
+              fontSize: isMobile ? '11px' : '14px',
               color: '#6B7280',
               fontWeight: '500',
             }}>
@@ -303,11 +303,11 @@ export default function Report() {
           WebkitOverflowScrolling: 'touch',
           borderRadius: '12px',
           border: '1px solid #E8E0D0',
-          marginBottom: '2rem',
+          marginBottom: isMobile ? '24px' : '2rem',
         }}>
           <table style={{
             width: '100%',
-            minWidth: '500px',
+            minWidth: isMobile ? '400px' : '500px',
             borderCollapse: 'collapse',
             background: 'white',
           }}>
@@ -315,17 +315,18 @@ export default function Report() {
               <tr style={{ backgroundColor: '#FAF7F2' }}>
                 <th style={{
                   textAlign: 'left',
-                  padding: '12px 20px',
-                  fontSize: '12px',
+                  padding: isMobile ? '8px 6px' : '12px 20px',
+                  fontSize: isMobile ? '11px' : '12px',
                   fontWeight: 600,
                   color: '#6B7280',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
+                  width: isMobile ? '80px' : 'auto',
                 }}>Priority</th>
                 <th style={{
                   textAlign: 'center',
-                  padding: '12px 20px',
-                  fontSize: '12px',
+                  padding: isMobile ? '8px 6px' : '12px 20px',
+                  fontSize: isMobile ? '11px' : '12px',
                   fontWeight: 600,
                   color: '#6B7280',
                   textTransform: 'uppercase',
@@ -333,8 +334,8 @@ export default function Report() {
                 }}>Pending</th>
                 <th style={{
                   textAlign: 'center',
-                  padding: '12px 20px',
-                  fontSize: '12px',
+                  padding: isMobile ? '8px 6px' : '12px 20px',
+                  fontSize: isMobile ? '11px' : '12px',
                   fontWeight: 600,
                   color: '#6B7280',
                   textTransform: 'uppercase',
@@ -342,8 +343,8 @@ export default function Report() {
                 }}>In Progress</th>
                 <th style={{
                   textAlign: 'center',
-                  padding: '12px 20px',
-                  fontSize: '12px',
+                  padding: isMobile ? '8px 6px' : '12px 20px',
+                  fontSize: isMobile ? '11px' : '12px',
                   fontWeight: 600,
                   color: '#6B7280',
                   textTransform: 'uppercase',
@@ -363,16 +364,16 @@ export default function Report() {
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
                   <td style={{
-                    padding: '16px 20px',
+                    padding: isMobile ? '8px 6px' : '16px 20px',
                   }}>
                     <div style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '8px',
+                      gap: isMobile ? '4px' : '8px',
                     }}>
                       <span style={{
-                        width: '8px',
-                        height: '8px',
+                        width: isMobile ? '6px' : '8px',
+                        height: isMobile ? '6px' : '8px',
                         borderRadius: '50%',
                         backgroundColor: priorityColors[priority],
                       }} />
@@ -380,6 +381,7 @@ export default function Report() {
                         textTransform: 'capitalize',
                         color: '#1A1A1A',
                         fontWeight: 500,
+                        fontSize: isMobile ? '12px' : '14px',
                       }}>
                         {priority}
                       </span>
@@ -387,22 +389,22 @@ export default function Report() {
                   </td>
                   <td style={{
                     textAlign: 'center',
-                    padding: '16px 20px',
-                    fontSize: '15px',
+                    padding: isMobile ? '8px 6px' : '16px 20px',
+                    fontSize: isMobile ? '12px' : '15px',
                     fontWeight: 600,
                     color: '#1A1A1A',
                   }}>{counts.pending}</td>
                   <td style={{
                     textAlign: 'center',
-                    padding: '16px 20px',
-                    fontSize: '15px',
+                    padding: isMobile ? '8px 6px' : '16px 20px',
+                    fontSize: isMobile ? '12px' : '15px',
                     fontWeight: 600,
                     color: '#1A1A1A',
                   }}>{counts.in_progress}</td>
                   <td style={{
                     textAlign: 'center',
-                    padding: '16px 20px',
-                    fontSize: '15px',
+                    padding: isMobile ? '8px 6px' : '16px 20px',
+                    fontSize: isMobile ? '12px' : '15px',
                     fontWeight: 600,
                     color: '#1A1A1A',
                   }}>{counts.done}</td>
@@ -421,7 +423,7 @@ export default function Report() {
       }} />
 
       {/* Overdue Tasks Section */}
-      <div style={{ marginTop: '32px' }}>
+      <div style={{ marginTop: isMobile ? '16px' : '32px' }}>
         <h2 style={{
           fontSize: '20px',
           fontWeight: 600,
@@ -449,18 +451,18 @@ export default function Report() {
                   background: '#FEF2F2',
                   border: '1px solid #FECACA',
                   borderRadius: '8px',
-                  padding: '12px 16px',
+                  padding: isMobile ? '10px 12px' : '12px 16px',
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '12px',
+                  gap: isMobile ? '8px' : '12px',
                 }}
               >
                 <AlertTriangle size={14} color="#EF4444" />
                 <span style={{
                   fontWeight: 600,
                   color: '#1A1A1A',
-                  fontSize: '14px',
+                  fontSize: isMobile ? '13px' : '14px',
                 }}>
                   {task.title}
                 </span>
@@ -477,7 +479,7 @@ export default function Report() {
                     backgroundColor: priorityColors[task.priority],
                   }} />
                   <span style={{
-                    fontSize: '13px',
+                    fontSize: isMobile ? '12px' : '13px',
                     color: '#6B7280',
                     textTransform: 'capitalize',
                   }}>
@@ -491,7 +493,7 @@ export default function Report() {
                 }}>
                   <Clock size={12} color="#EF4444" />
                   <span style={{
-                    fontSize: '13px',
+                    fontSize: isMobile ? '12px' : '13px',
                     color: '#EF4444',
                   }}>
                     {format(new Date(task.due_date), 'MMM dd, yyyy')}
