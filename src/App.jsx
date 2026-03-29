@@ -84,7 +84,7 @@ function App() {
       )}
 
       {/* Main Content */}
-      <div style={{ flex: 1, marginLeft: 0 }} className="main-content">
+      <div style={{ flex: 1, marginLeft: 0, overflowY: 'auto', height: '100vh' }} className="main-content">
         {children}
       </div>
 

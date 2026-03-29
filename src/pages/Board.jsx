@@ -415,7 +415,7 @@ export default function Board() {
       {/* Columns */}
       {isMobile ? (
         <div style={{ 
-          height: 'calc(100vh - 200px)', 
+          height: 'calc(100vh - 60px)', 
           overflowY: 'auto',
           padding: '0 1rem 1rem 1rem'
         }}>

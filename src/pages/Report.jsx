@@ -74,6 +74,14 @@ export default function Report() {
     return completed;
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div style={{
       flex: 1,
@@ -82,6 +90,7 @@ export default function Report() {
       overflowY: 'auto',
       fontFamily: theme.fonts.family,
       minHeight: '100vh',
+      paddingBottom: '40px',
     }} className="report-page">
       {/* Page Header */}
       <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -148,9 +157,9 @@ export default function Report() {
 
       {/* Summary Cards */}
       {report && (
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+        <div className="stat-cards-row" style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
           gap: '1.5rem',
           marginBottom: '2rem',
         }}>
@@ -166,7 +175,7 @@ export default function Report() {
               position: 'absolute',
               top: '20px',
               right: '20px',
-              opacity: 0.2,
+              opacity: 1,
             }} />
             <div style={{
               fontSize: '32px',
@@ -196,7 +205,7 @@ export default function Report() {
               position: 'absolute',
               top: '20px',
               right: '20px',
-              opacity: 0.2,
+              opacity: 1,
             }} />
             <div style={{
               fontSize: '32px',
@@ -226,7 +235,7 @@ export default function Report() {
               position: 'absolute',
               top: '20px',
               right: '20px',
-              opacity: 0.2,
+              opacity: 1,
             }} />
             <div style={{
               fontSize: '32px',
@@ -248,12 +257,13 @@ export default function Report() {
 
       {/* Report Table */}
       {report && (
-        <div style={{
+        <div className="report-table" style={{
           backgroundColor: 'white',
           borderRadius: '12px',
           border: '1px solid #E8E0D0',
           overflow: 'hidden',
           marginBottom: '2rem',
+          overflowX: isMobile ? 'auto' : 'visible',
         }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
@@ -358,8 +368,15 @@ export default function Report() {
         </div>
       )}
 
+      {/* Section Divider */}
+      <div style={{
+        height: '1px',
+        background: '#E8E0D0',
+        margin: '32px 0',
+      }} />
+
       {/* Overdue Tasks Section */}
-      <div>
+      <div style={{ marginTop: '32px' }}>
         <h2 style={{
           fontSize: '20px',
           fontWeight: 600,
