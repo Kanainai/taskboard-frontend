@@ -98,12 +98,12 @@ export default function Sidebar({ onClose }) {
       </button>
 
       {/* Logo Area */}
-      <div style={{ padding: '1.5rem', paddingBottom: '1rem' }}>
+      <div style={{ padding: '1.5rem', paddingBottom: '1rem', flexShrink: 0 }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
-          marginBottom: '1.25rem',
+          marginBottom: '1rem',
         }}>
           <CheckSquare size={24} color="#F59E0B" />
           <h1 style={{
@@ -120,8 +120,8 @@ export default function Sidebar({ onClose }) {
         {userName && (
           <div style={{
             backgroundColor: '#FEF3C7',
-            borderRadius: '12px',
-            padding: '14px',
+            borderRadius: '10px',
+            padding: '12px',
             border: '1px solid #FDE68A',
             position: 'relative',
             overflow: 'hidden',
@@ -131,29 +131,29 @@ export default function Sidebar({ onClose }) {
               position: 'absolute',
               top: 0,
               right: 0,
-              width: '80px',
-              height: '80px',
+              width: '60px',
+              height: '60px',
               background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)',
               pointerEvents: 'none',
             }} />
             
             <div style={{
-              marginBottom: '10px',
+              marginBottom: '8px',
             }}>
               <div style={{
-                fontSize: '13px',
+                fontSize: '12px',
                 color: '#92400E',
                 fontWeight: 600,
-                marginBottom: '4px',
+                marginBottom: '3px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '5px',
               }}>
                 <span>{getGreetingEmoji()}</span>
                 <span>{getGreeting()}</span>
               </div>
               <div style={{
-                fontSize: '15px',
+                fontSize: '14px',
                 color: '#1A1A1A',
                 fontWeight: 700,
                 wordBreak: 'break-word',
@@ -166,12 +166,12 @@ export default function Sidebar({ onClose }) {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
-              fontSize: '11px',
+              gap: '5px',
+              fontSize: '10px',
               color: '#78350F',
               fontWeight: 500,
             }}>
-              <Calendar size={11} />
+              <Calendar size={10} />
               <span style={{ wordBreak: 'break-word' }}>{getCurrentDate()}</span>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function Sidebar({ onClose }) {
       </div>
       
       {/* Navigation */}
-      <nav style={{ padding: '0 1rem', marginBottom: '1rem' }}>
+      <nav style={{ padding: '0 1rem', marginBottom: '0.5rem', flexShrink: 0 }}>
         <Link
           to="/board"
           onClick={onClose}
@@ -285,15 +285,15 @@ export default function Sidebar({ onClose }) {
       </nav>
 
       {/* Overdue Badge */}
-      <div style={{ padding: '0 1rem 1.5rem', marginTop: 'auto' }}>
+      <div style={{ padding: '0 1rem 1.5rem', marginTop: 'auto', flexShrink: 0 }}>
         <div style={{
           height: '1px',
           backgroundColor: '#E8E0D0',
-          marginBottom: '1rem',
+          marginBottom: '0.75rem',
         }} />
         
         <div style={{
-          padding: '10px 14px',
+          padding: '8px 12px',
           backgroundColor: overdueCount > 0 ? '#FEF2F2' : '#F9FAFB',
           border: `1px solid ${overdueCount > 0 ? '#FECACA' : '#E5E7EB'}`,
           borderRadius: '8px',
@@ -306,7 +306,7 @@ export default function Sidebar({ onClose }) {
           }}>
             <AlertCircle size={14} color={overdueCount > 0 ? '#EF4444' : '#9CA3AF'} style={{ flexShrink: 0 }} />
             <span style={{
-              fontSize: '13px',
+              fontSize: '12px',
               color: overdueCount > 0 ? '#EF4444' : '#6B7280',
               flex: 1,
               overflow: 'hidden',
@@ -315,8 +315,8 @@ export default function Sidebar({ onClose }) {
               Overdue Tasks
             </span>
             <span style={{
-              minWidth: '24px',
-              height: '24px',
+              minWidth: '22px',
+              height: '22px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
