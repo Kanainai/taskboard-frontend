@@ -275,7 +275,7 @@ body {
 }
 
 .react-datepicker-popper {
-  z-index: 9999 !important;
+  z-index: 100001 !important;
 }
 
 /* Hide scrollbar on overdue tasks list */
@@ -285,18 +285,18 @@ body {
 
 /* DatePicker z-index fix */
 .react-datepicker-popper {
-  z-index: 9999 !important;
+  z-index: 100001 !important;
 }
 
 .react-datepicker {
-  z-index: 9999 !important;
+  z-index: 100001 !important;
 }
 
 /* Mobile DatePicker Portal */
 @media (max-width: 768px) {
   .react-datepicker__portal {
     background: rgba(0, 0, 0, 0.5) !important;
-    z-index: 9999 !important;
+    z-index: 100001 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;

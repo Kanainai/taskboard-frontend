@@ -67,7 +67,7 @@ export default function CreateTaskModal({ isOpen, onClose, onSubmit }) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 50,
+      zIndex: 100000,
     }}
     onClick={onClose}
     >
