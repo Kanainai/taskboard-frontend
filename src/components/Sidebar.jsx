@@ -179,7 +179,7 @@ export default function Sidebar({ onClose }) {
       </div>
       
       {/* Navigation */}
-      <nav style={{ flex: 1, padding: '0 1rem' }}>
+      <nav style={{ padding: '0 1rem', marginBottom: '1rem' }}>
         <Link
           to="/board"
           onClick={onClose}
@@ -285,7 +285,7 @@ export default function Sidebar({ onClose }) {
       </nav>
 
       {/* Overdue Badge */}
-      <div style={{ padding: '0 1rem 1rem' }}>
+      <div style={{ padding: '0 1rem 1.5rem', marginTop: 'auto' }}>
         <div style={{
           height: '1px',
           backgroundColor: '#E8E0D0',
