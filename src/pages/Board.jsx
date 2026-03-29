@@ -222,7 +222,7 @@ export default function Board() {
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
-      height: '100vh',
+      height: '100dvh',
       backgroundColor: theme.colors.pageBg,
       fontFamily: theme.fonts.family,
       overflow: 'hidden',
@@ -415,7 +415,7 @@ export default function Board() {
       {/* Columns */}
       {isMobile ? (
         <div style={{ 
-          height: 'calc(100vh - 60px)', 
+          height: 'calc(100dvh - 60px)', 
           overflowY: 'auto',
           padding: '0 1rem 1rem 1rem'
         }}>
@@ -456,7 +456,7 @@ export default function Board() {
           gridTemplateColumns: '1fr 1fr 1fr',
           gap: '20px',
           padding: '0 2rem 2rem 2rem',
-          height: 'calc(100vh - 180px)',
+          height: 'calc(100dvh - 180px)',
           alignItems: 'start',
         }}>
           <Column

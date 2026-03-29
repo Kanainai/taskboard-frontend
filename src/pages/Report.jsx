@@ -91,7 +91,7 @@ export default function Report() {
       backgroundColor: theme.colors.pageBg,
       overflowY: 'auto',
       fontFamily: theme.fonts.family,
-      minHeight: '100vh',
+      minHeight: '100dvh',
       paddingBottom: '40px',
     }} className="report-page">
       {/* Page Header */}

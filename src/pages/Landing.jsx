@@ -38,7 +38,7 @@ export default function Landing() {
       right: 0,
       bottom: 0,
       width: '100vw',
-      height: '100vh',
+      height: '100dvh',
       margin: 0,
       padding: 0,
       overflow: 'hidden',
